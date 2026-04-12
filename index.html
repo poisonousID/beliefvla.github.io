@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeliefVLA: Implicit Belief-State Driven Action Models</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <nav class="nav-bar">
+        <div class="nav-inner">
+            <span class="logo">
+                <span class="logo-belief">Belief</span><span class="logo-vla">VLA</span>
+            </span>
+            <div class="nav-links">
+                <a href="#video">VIDEO</a> 
+                <a href="#abstract">ABSTRACT</a> 
+                <a href="#method">METHOD</a>
+                <a href="#experiments">EXPERIMENTS</a>
+            </div>
+            <div class="nav-icons">
+                <a href="#" class="icon-link"><i class="fa-solid fa-file-pdf"></i> PAPER</a>
+                <a href="https://github.com/poisonousID/BeliefVLA" target="_blank" class="icon-link"><i class="fa-brands fa-github"></i> CODE</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="cinematic-hero">
+        <div class="hero-content">
+            <div class="hero-badge">A NOVEL BELIEF-STATE FRAMEWORK</div>
+            
+            <h1 class="hero-title">
+                <span class="title-belief">Belief</span><span class="title-vla">VLA</span>
+            </h1>
+            
+            <h2 class="hero-subtitle">
+                IMPLICIT BELIEF-STATE DRIVEN VISION-LANGUAGE-ACTION MODELS FOR <span class="text-red">ROBUST MANIPULATION</span>
+            </h2>
+            
+            <div class="authors">
+                Anonymous Authors
+            </div>
+            <div class="affiliations">
+                Anonymous Institution
+            </div>
+
+            <div class="action-buttons">
+                <a href="#" class="btn-primary">
+                    <i class="fa-solid fa-file-pdf"></i> READ PAPER
+                </a>
+                <a href="https://github.com/poisonousID/BeliefVLA" target="_blank" class="btn-secondary">
+                    <i class="fa-brands fa-github"></i> GITHUB REPO
+                </a>
+            </div>
+        </div>
+        <div class="hero-slant"></div>
+    </header>
+
+    <main>
+        <section id="video" class="section dark-bg">
+            <div class="container">
+                <h2 class="section-heading"><span class="text-red">01.</span> VIDEO PRESENTATION</h2>
+                <div class="video-frame" onclick="toggleVideo(this)" style="box-shadow: none;">
+                    <video class="main-video" id="demo-video" muted loop playsinline>
+                        <source src="videos/BeliefVLA.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                    <div class="play-overlay" id="play-overlay">
+                        <div class="play-btn-hexagon">
+                            <i class="fa-solid fa-play"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="abstract" class="section light-bg slant-top-right">
+            <div class="container">
+                <h2 class="section-heading"><span class="text-red">02.</span> ABSTRACT</h2>
+                
+                <div class="text-block abstract-block pop-out-card">
+                    <p>
+                        While Vision-Language-Action (VLA) models exhibit remarkable open-vocabulary generalization in robotic manipulation, they remain fundamentally constrained by a structurally reactive paradigm. 
+                    </p>
+                    <p>
+                        Inferring actions from static visual representations or simple frame stacking forces policies to learn temporal dynamics from scratch, lacking the physical grounding necessary for robust real-world control. We introduce <strong>BeliefVLA</strong>, a framework that shifts robotic control from purely reactive mapping to reasoning within a continuous implicit belief state. 
+                    </p>
+                    <p>
+                        By leveraging a Video Joint-Embedding Predictive Architecture (V-JEPA2) to infer these latent states from historical context, BeliefVLA injects dynamics-aware priors directly into the policy. This approach seamlessly integrates physical reasoning and spatiotemporal dynamics without sacrificing the high-level semantic capabilities of foundational VLMs. 
+                    </p>
+                    <p>
+                        Extensive experiments establish BeliefVLA's state-of-the-art performance across simulated and real-world benchmarks. Furthermore, five observation-perturbation tasks explicitly validate its capacity for temporal memory, action-centric features, and physical priors.
+                    </p>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="method" class="section dark-bg slant-top-left">
+            <div class="container">
+                <h2 class="section-heading"><span class="text-red">03.</span> ARCHITECTURE</h2>
+                
+                <div class="white-frame large-frame pop-out-card">
+                    <img src="images/framework.png" alt="BeliefVLA Framework" class="responsive-img-clean">
+                </div>
+                
+                <div class="method-grid">
+                    <div class="method-card">
+                        <div class="card-number">I</div>
+                        <h3>Dynamic Belief State</h3>
+                        <p>A fine-tuned V-JEPA2 encoder extracts physical dynamics and temporal evolution from historical observations, acting as an implicit belief prior.</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="card-number">II</div>
+                        <h3>Multimodal Fusion</h3>
+                        <p>Semantic tokens (PaliGemma), static visual tokens (SigLIP), and belief tokens are unified via deep self-attention layers.</p>
+                    </div>
+                    <div class="method-card">
+                        <div class="card-number">III</div>
+                        <h3>Action Generation</h3>
+                        <p>A Flow Matching-based continuous action expert refines random noise into precise multi-step action sequences grounded in physical context.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="experiments" class="section light-bg slant-top-right">
+            <div class="container">
+                <h2 class="section-heading"><span class="text-red">04.</span> Experiments</h2>
+                
+                <div class="stats-grid">
+                    <div class="stat-box">
+                        <div class="stat-value text-red">98.2%</div>
+                        <div class="stat-label">LIBERO Success Rate</div>
+                        <div class="stat-sub">New State-of-the-Art</div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value text-red">+15.4%</div>
+                        <div class="stat-label">Perturbation Handling</div>
+                        <div class="stat-sub">Improvement over &pi;<sub>0.5</sub></div>
+                    </div>
+                    <div class="stat-box">
+                        <div class="stat-value text-red">20Hz</div>
+                        <div class="stat-label">Inference Speed</div>
+                        <div class="stat-sub">Real-Time Execution (~50ms)</div>
+                    </div>
+                </div>
+
+                <div class="grid-2-col mt-5">
+                    <div>
+                        <h3 class="sub-heading">SURVIVING THE CHAOS</h3>
+                        <p>BeliefVLA was explicitly validated in the real world against severe observation perturbations, including:</p>
+                        <ul class="heavy-list">
+                            <li><strong>Dynamic Adaptation:</strong> Handing objects in motion.</li>
+                            <li><strong>Background Variation:</strong> Adapting to OOD textures.</li>
+                            <li><strong>Spatial Perturbation:</strong> Shifting robot base positions.</li>
+                            <li><strong>Illumination Variation:</strong> Extreme lighting changes.</li>
+                            <li><strong>FoV Occluded:</strong> Temporary camera obstruction.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="carousel-container pop-out-card">
+                        <button class="nav-btn prev-btn" id="prevBtn"><i class="fa-solid fa-chevron-left"></i></button>
+                        
+                        <div class="carousel-track" id="carouselTrack">
+                            <div class="carousel-card">
+                                <img src="images/dynamic_adaptaion.png" alt="Dynamic Adaptation">
+                                <div class="carousel-label">Dynamic Adaptation</div>
+                            </div>
+                            <div class="carousel-card">
+                                <img src="images/background_variation.jpg" alt="Background Variation">
+                                <div class="carousel-label">Background Variation</div>
+                            </div>
+                            <div class="carousel-card">
+                                <img src="images/spatial_perturbation.png" alt="Spatial Perturbation">
+                                <div class="carousel-label">Spatial Perturbation</div>
+                            </div>
+                            <div class="carousel-card">
+                                <img src="images/field-of-view_occluded.jpg" alt="FoV Occluded">
+                                <div class="carousel-label">FoV Occluded</div>
+                            </div>
+                            <div class="carousel-card">
+                                <div class="panel-split">
+                                    <img src="images/illumination_variation1.jpg" alt="Illumination 1" style="border-right: 4px solid #1A1A1A;">
+                                    <img src="images/illumination_variation2.jpg" alt="Illumination 2">
+                                </div>
+                                <div class="carousel-label">Illumination Variation</div>
+                            </div>
+                        </div>
+
+                        <button class="nav-btn next-btn" id="nextBtn"><i class="fa-solid fa-chevron-right"></i></button>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Custom Video Player Logic
+        function toggleVideo(container) {
+            const video = container.querySelector('.main-video');
+            const overlay = container.querySelector('.play-overlay');
+            if (video.paused) {
+                video.play();
+                video.controls = true;
+                overlay.style.opacity = '0';
+                overlay.style.pointerEvents = 'none';
+            } else {
+                video.pause();
+                video.controls = false;
+                overlay.style.opacity = '1';
+                overlay.style.pointerEvents = 'auto';
+            }
+        }
+
+        // Carousel Logic
+        const track = document.getElementById('carouselTrack');
+        const nextBtn = document.getElementById('nextBtn');
+        const prevBtn = document.getElementById('prevBtn');
+        let autoScrollInterval;
+
+        function scrollNext() {
+            if (track.scrollLeft + track.clientWidth >= track.scrollWidth - 10) {
+                track.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: track.clientWidth, behavior: 'smooth' });
+            }
+        }
+
+        function scrollPrev() {
+            if (track.scrollLeft <= 0) {
+                track.scrollTo({ left: track.scrollWidth, behavior: 'smooth' });
+            } else {
+                track.scrollBy({ left: -track.clientWidth, behavior: 'smooth' });
+            }
+        }
+
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(scrollNext, 3500); 
+        }
+
+        function resetAutoScroll() {
+            clearInterval(autoScrollInterval);
+            startAutoScroll();
+        }
+
+        nextBtn.addEventListener('click', () => { scrollNext(); resetAutoScroll(); });
+        prevBtn.addEventListener('click', () => { scrollPrev(); resetAutoScroll(); });
+
+        startAutoScroll();
+    </script>
+</body>
+</html>
