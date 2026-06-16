@@ -8,11 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles2.css">
 </head>
 <body>
-
-    <div class="topbar"></div>
 
     <nav class="nav-bar">
         <div class="nav-inner">
@@ -31,24 +29,24 @@
     </nav>
 
     <header class="hero">
-        <div class="hero-montage"></div>
-        <div class="hero-veil"></div>
+        <div class="hero-grid"></div>
         <div class="hero-inner">
-            <div class="hero-meta mono">
-                <span class="dot"></span>
-                <span>Robotic Manipulation</span>
-                <span>&middot;</span>
-                <span>Vision-Language-Action</span>
+            <div class="hero-badge mono">
+                <span class="dot"></span> Belief-State Framework
             </div>
 
             <h1 class="hero-title wordmark"><span class="b">Belief</span><span class="v">VLA</span></h1>
 
             <h2 class="hero-subtitle">
-                Implicit Belief-State Driven Vision-Language-Action Models for <span class="hl">Robust Manipulation</span>
+                Implicit Belief-State Driven Vision-Language-Action Models for Robust Manipulation
             </h2>
 
-            <div class="authors">Anonymous Authors</div>
-            <div class="affiliations">Anonymous Institution</div>
+            <div class="authors">
+                Anonymous Authors
+            </div>
+            <div class="affiliations">
+                Anonymous Institution
+            </div>
 
             <div class="action-buttons">
                 <a href="#" class="btn-primary">
@@ -65,10 +63,8 @@
     <main>
         <section id="video" class="section">
             <div class="container reveal">
-                <div class="sec-head">
-                    <span class="sec-num">01</span>
-                    <h2>Video Presentation</h2>
-                </div>
+                <span class="section-eyebrow mono">Overview</span>
+                <h2 class="section-heading">Video Presentation</h2>
                 <div class="video-frame" onclick="toggleVideo(this)">
                     <video class="main-video" id="demo-video" muted loop playsinline>
                         <source src="videos/BeliefVLA.mp4" type="video/mp4">
@@ -85,17 +81,15 @@
 
         <section id="abstract" class="section alt-bg">
             <div class="container reveal">
-                <div class="sec-head">
-                    <span class="sec-num">02</span>
-                    <h2>Abstract</h2>
-                </div>
+                <span class="section-eyebrow mono">TL;DR</span>
+                <h2 class="section-heading">Abstract</h2>
 
                 <div class="abstract-block">
                     <p>
                         While Vision-Language-Action (VLA) models exhibit remarkable open-vocabulary generalization in robotic manipulation, they remain fundamentally constrained by a structurally reactive paradigm.
                     </p>
                     <p>
-                        Inferring actions from static visual representations or simple frame stacking forces policies to learn temporal dynamics from scratch, lacking the physical grounding necessary for robust real-world control. We introduce <span class="hl">BeliefVLA</span>, a framework that shifts robotic control from purely reactive mapping to reasoning within a continuous implicit belief state</span>.
+                        Inferring actions from static visual representations or simple frame stacking forces policies to learn temporal dynamics from scratch, lacking the physical grounding necessary for robust real-world control. We introduce <strong>BeliefVLA</strong>, a framework that shifts robotic control from purely reactive mapping to reasoning within a continuous implicit belief state.
                     </p>
                     <p>
                         By leveraging a Video Joint-Embedding Predictive Architecture (V-JEPA2) to infer these latent states from historical context, BeliefVLA injects dynamics-aware priors directly into the policy. This approach seamlessly integrates physical reasoning and spatiotemporal dynamics without sacrificing the high-level semantic capabilities of foundational VLMs.
@@ -109,33 +103,31 @@
 
         <section id="method" class="section">
             <div class="container reveal">
-                <div class="sec-head">
-                    <span class="sec-num">03</span>
-                    <h2>Architecture</h2>
-                </div>
+                <span class="section-eyebrow mono">How it works</span>
+                <h2 class="section-heading">Architecture</h2>
 
                 <div class="figure">
                     <div class="figure-shell">
                         <img src="images/framework.png" alt="BeliefVLA Framework">
                     </div>
                     <p class="figure-caption">
-                        Overview of the <b>BeliefVLA</b> framework, which integrates an implicit belief state into the vision-language-action pipeline.
+                        Overview of the BeliefVLA framework, which integrates an implicit belief state into the vision-language-action pipeline.
                     </p>
                 </div>
 
                 <div class="method-grid">
                     <div class="method-card">
-                        <div class="card-number">01 — Belief</div>
+                        <div class="card-number">I</div>
                         <h3>Dynamic Belief State</h3>
                         <p>A fine-tuned V-JEPA2 encoder extracts physical dynamics and temporal evolution from historical observations, acting as an implicit belief prior.</p>
                     </div>
                     <div class="method-card">
-                        <div class="card-number">02 — Fusion</div>
+                        <div class="card-number">II</div>
                         <h3>Multimodal Fusion</h3>
                         <p>Semantic tokens (PaliGemma), static visual tokens (SigLIP), and belief tokens are unified via deep self-attention layers.</p>
                     </div>
                     <div class="method-card">
-                        <div class="card-number">03 — Action</div>
+                        <div class="card-number">III</div>
                         <h3>Action Generation</h3>
                         <p>A Flow Matching-based continuous action expert refines random noise into precise multi-step action sequences grounded in physical context.</p>
                     </div>
@@ -145,24 +137,22 @@
 
         <section id="experiments" class="section alt-bg">
             <div class="container reveal">
-                <div class="sec-head">
-                    <span class="sec-num">04</span>
-                    <h2>Experiments</h2>
-                </div>
+                <span class="section-eyebrow mono">Results</span>
+                <h2 class="section-heading">Experiments</h2>
 
                 <div class="stats-grid">
                     <div class="stat-box">
-                        <div class="stat-value" data-prefix="" data-target="97.1" data-decimals="1" data-suffix="%">97.1%</div>
+                        <div class="stat-value">97.1%</div>
                         <div class="stat-label">LIBERO Success Rate</div>
                         <div class="stat-sub">New State-of-the-Art</div>
                     </div>
                     <div class="stat-box">
-                        <div class="stat-value" data-prefix="+" data-target="15.4" data-decimals="1" data-suffix="%">+15.4%</div>
+                        <div class="stat-value">+15.4%</div>
                         <div class="stat-label">Perturbation Handling</div>
                         <div class="stat-sub">Improvement over &pi;<sub>0.5</sub></div>
                     </div>
                     <div class="stat-box">
-                        <div class="stat-value" data-prefix="" data-target="20" data-decimals="0" data-suffix="Hz">20Hz</div>
+                        <div class="stat-value">20Hz</div>
                         <div class="stat-label">Inference Speed</div>
                         <div class="stat-sub">Real-Time Execution (~50ms)</div>
                     </div>
@@ -262,38 +252,26 @@
             }
         }
 
-        function startAutoScroll() { autoScrollInterval = setInterval(scrollNext, 3500); }
-        function resetAutoScroll() { clearInterval(autoScrollInterval); startAutoScroll(); }
+        function startAutoScroll() {
+            autoScrollInterval = setInterval(scrollNext, 3500);
+        }
+
+        function resetAutoScroll() {
+            clearInterval(autoScrollInterval);
+            startAutoScroll();
+        }
 
         nextBtn.addEventListener('click', () => { scrollNext(); resetAutoScroll(); });
         prevBtn.addEventListener('click', () => { scrollPrev(); resetAutoScroll(); });
+
         startAutoScroll();
 
-        // Count-up animation for stats
-        function countUp(el) {
-            const target = parseFloat(el.dataset.target);
-            const decimals = parseInt(el.dataset.decimals || '0', 10);
-            const prefix = el.dataset.prefix || '';
-            const suffix = el.dataset.suffix || '';
-            const duration = 1400;
-            const start = performance.now();
-            function tick(now) {
-                const p = Math.min((now - start) / duration, 1);
-                const eased = 1 - Math.pow(1 - p, 3);
-                el.textContent = prefix + (target * eased).toFixed(decimals) + suffix;
-                if (p < 1) requestAnimationFrame(tick);
-                else el.textContent = prefix + target.toFixed(decimals) + suffix;
-            }
-            requestAnimationFrame(tick);
-        }
-
-        // Scroll reveal + trigger count-up
+        // Scroll reveal animations
         const revealEls = document.querySelectorAll('.reveal');
         const io = new IntersectionObserver((entries) => {
             entries.forEach((entry) => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('in-view');
-                    entry.target.querySelectorAll('.stat-value[data-target]').forEach(countUp);
                     io.unobserve(entry.target);
                 }
             });
