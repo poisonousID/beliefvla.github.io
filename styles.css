@@ -95,18 +95,29 @@ a:hover { color: #fff; }
 }
 
 .nav-inner {
-    max-width: var(--maxw);
-    margin: 0 auto;
-    padding: 14px 28px;
-    display: flex;
-    justify-content: space-between;
+    width: 100%;
+    padding: 14px clamp(20px, 4vw, 48px);
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
     align-items: center;
     gap: 16px;
 }
 
-.nav-logo { font-size: 1.7rem; }
+.nav-logo { font-size: 1.7rem; justify-self: start; }
 
-.nav-links { display: flex; gap: 28px; }
+.nav-links {
+    display: flex;
+    gap: 28px;
+    justify-self: center;
+    grid-column: 2;
+}
+
+.nav-icons {
+    display: flex;
+    gap: 8px;
+    justify-self: end;
+    grid-column: 3;
+}
 
 .nav-links a {
     color: var(--text-soft);
@@ -128,8 +139,6 @@ a:hover { color: #fff; }
 
 .nav-links a:hover { color: var(--white); }
 .nav-links a:hover::after { width: 100%; }
-
-.nav-icons { display: flex; gap: 8px; }
 
 .nav-icons a {
     color: var(--text);
